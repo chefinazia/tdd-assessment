@@ -1,8 +1,8 @@
 function stringCalculatorWithDelimiter(inputStr, delimiter) {
-  const numArr = inputStr.split(delimiter);
+  const numArr = inputStr.toString().split(delimiter);
   let total = 0;
   numArr.forEach((num) => {
-    total += Number(num);
+    total += !isNaN(num) ? Number(num) : 0;
   });
 
   return total;
@@ -12,15 +12,14 @@ function stringCalculator(inputStr) {
   if (inputStr.length === 0) {
     return 0;
   }
+  inputStr = inputStr.split("\n").toString().split(",");
   const delimiter =
-    inputStr[1] === ',' ? "," : "\n";
+    inputStr[0][0] + inputStr[0][1] === "//" ? inputStr[0][2] : ',';
   switch (delimiter) {
     case ",":
       return stringCalculatorWithDelimiter(inputStr, ",");
-    case "\n":
-      return stringCalculatorWithDelimiter(inputStr, "\n");
     default:
-      return stringCalculatorWithDelimiter(inputStr, ",");
+      return stringCalculatorWithDelimiter(inputStr[1], delimiter);
   }
 }
 

@@ -19,4 +19,9 @@ describe("stringCalculator",function(){
         const inputString = "1\n2\n3";
         expect(stringCalculator(inputString)).toBe(6);
     })
+
+    it("should return the sum of the input string numbers separated by other delimiters",function(){
+        const inputString = "//;\n1;2;3";
+        expect(stringCalculator(inputString)).toBe(6);
+    })
 })
