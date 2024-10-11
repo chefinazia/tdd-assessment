@@ -24,4 +24,14 @@ describe("stringCalculator",function(){
         const inputString = "//;\n1;2;3";
         expect(stringCalculator(inputString)).toBe(6);
     })
+    
+    it("should throw an error if the input string contains a negative number", function(){
+        const inputString = "-1,2,3";
+        expect(() => stringCalculator(inputString)).toThrow("Negative numbers are not allowed: -1");
+    })
+
+    it("should throw an error if the input string contains more than one negative number", function(){
+        const inputString = "-1,-2,3";
+        expect(() => stringCalculator(inputString)).toThrow("Negative numbers are not allowed: -1, -2");
+    })
 })
