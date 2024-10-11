@@ -42,4 +42,9 @@ describe("stringCalculator",function(){
         const inputString = "1,2,1001";
         expect(stringCalculator(inputString)).toBe(3);
     })
+
+    it("should support custom delimiters", function(){
+        const inputString = "//[***]\n1***2***3";
+        expect(stringCalculator(inputString)).toBe(6);
+    })
 })
