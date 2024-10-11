@@ -23,6 +23,9 @@ describe("stringCalculator",function(){
     it("should return the sum of the input string numbers separated by other delimiters",function(){
         const inputString = "//;\n1;2;3";
         expect(stringCalculator(inputString)).toBe(6);
+
+        const inputString2 = "//***\n1***2***3";
+        expect(stringCalculator(inputString2)).toBe(6);
     })
     
     it("should throw an error if the input string contains a negative number", function(){
@@ -33,5 +36,10 @@ describe("stringCalculator",function(){
     it("should throw an error if the input string contains more than one negative number", function(){
         const inputString = "-1,-2,3";
         expect(() => stringCalculator(inputString)).toThrow("Negative numbers are not allowed: -1, -2");
+    })
+
+    it("should ignore numbers bigger than 1000", function(){
+        const inputString = "1,2,1001";
+        expect(stringCalculator(inputString)).toBe(3);
     })
 })
