@@ -3,7 +3,7 @@ function stringCalculatorWithDelimiter(inputStr, delimiter) {
   let total = 0;
   const arrNegativeNum = [];
   numArr.forEach((num) => {
-    total += (!isNaN(num) && Number(num)<=1000)? Number(num) : 0;
+    total += !isNaN(num) && Number(num) <= 1000 ? Number(num) : 0;
     if (num < 0) {
       arrNegativeNum.push(Number(num));
     }
@@ -23,13 +23,18 @@ function stringCalculator(inputStr) {
   }
   inputStr = inputStr.split("\n").toString().split(",");
   const delimiter =
-    inputStr[0][0] + inputStr[0][1] === "//" ? inputStr[0].replace("//",'') : ",";
-  switch (delimiter) {
-    case ",":
-      return stringCalculatorWithDelimiter(inputStr, ",");
-    default:
-      return stringCalculatorWithDelimiter(inputStr[1], delimiter);
+    inputStr[0][0] + inputStr[0][1] === "//"
+      ? inputStr[0].replace("//", "")
+      : ",";
+  if (delimiter === ",") {
+    return stringCalculatorWithDelimiter(inputStr, ",");
+  } else if (delimiter.match(/\[[^\s]+\]/)) {
+    return stringCalculatorWithDelimiter(
+      inputStr[1],
+      delimiter.slice(1,delimiter.length-1)
+    );
+  } else {
+    return stringCalculatorWithDelimiter(inputStr[1], delimiter);
   }
 }
-
 module.exports = stringCalculator;
