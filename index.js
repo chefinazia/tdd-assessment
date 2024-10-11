@@ -31,7 +31,7 @@ function stringCalculator(inputStr) {
   } else if (delimiter.match(/\[[^\s]+\]/)) {
     return stringCalculatorWithDelimiter(
       inputStr[1],
-      delimiter.slice(1,delimiter.length-1)
+      delimiter.slice(1, delimiter.length - 1)
     );
   } else {
     return stringCalculatorWithDelimiter(inputStr[1], delimiter);
