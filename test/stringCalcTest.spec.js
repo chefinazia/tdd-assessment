@@ -9,4 +9,14 @@ describe("stringCalculator",function(){
         const inputString = "1,2,3";
         expect(stringCalculator(inputString)).toBe(6);
     })
+
+    it("should return the sum of any numbers of the input string",function(){
+        const inputString = "1,2,3,4,5";
+        expect(stringCalculator(inputString)).toBe(15);
+    })
+
+    it("should return the sum of the input string numbers separated by newlines",function(){
+        const inputString = "1\n2\n3";
+        expect(stringCalculator(inputString)).toBe(6);
+    })
 })
