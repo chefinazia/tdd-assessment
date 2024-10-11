@@ -4,4 +4,9 @@ describe("stringCalculator",function(){
         const inputString = "";
         expect(stringCalculator(inputString)).toBe(0);
     })
+
+    it("should return the sum of the input string numbers separated by commas",function(){
+        const inputString = "1,2,3";
+        expect(stringCalculator(inputString)).toBe(6);
+    })
 })
